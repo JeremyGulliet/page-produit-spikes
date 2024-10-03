@@ -27,7 +27,7 @@ export default function Home() {
   };
   return (
     <main className="text-space-cadet flex items-center justify-center">
-      <div className="flex w-1/2 flex-col gap-12 ">
+      <div className="flex w-1/2 flex-col gap-12">
         <div className="flex flex-col gap-4">
           <ButtonBack />
           <ProductHeader category="Chair" name="Meryl Lounge Chair" />
@@ -45,17 +45,24 @@ export default function Home() {
         />
         <div className="flex gap-6">
           <Quantity handleQuantityChange={handleQuantityChange} />
-          <ButtonAdd />
+          <ButtonAdd
+            productId={0}
+            productName="Merly Lounge Chair"
+            productPrice={149.99}
+            productImage="/assets/Meryl_Lounge_Chair_Teal_3 1.png"
+            quantity={quantity}
+            productDescription="The gently curved lines accentuated by sewn details are kind to your body and pleasant to look at. Also, there’s a tilt and height-adjusting mechanism that’s built to outlast years of ups and downs."
+          />
         </div>
         <p className="ml-20">
           Free 3-5 day shipping • Tool-free assembly • 30-day trial
         </p>
-        <div className="ml-20 flex justify-between items-center mb-20 w-2/3">
+        <div className="mb-20 ml-20 flex w-2/3 items-center justify-between">
           <ButonWish handleWishlist={handleWishlist} />
           <Social />
         </div>
       </div>
-      
+
       <CarouselProduct />
     </main>
   );
