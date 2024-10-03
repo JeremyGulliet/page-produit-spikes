@@ -2,26 +2,126 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+root {
+  @apply h-screen w-full;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply h-screen w-full flex flex-col;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.brand-font {
+  font-family: "Cambay", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 39.09px;
 }
+
+.headline-large {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 56px;
+}
+
+.headline-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 44px;
+}
+
+.headline-small {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.title-large {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 40px;
+}
+
+.title-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.title-small {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.label-large {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.label-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.label-small {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.body-large {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.body-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.body-small {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.proxima-nova {
+  font-family: Proxima Nova;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #000;
+  border-radius: 5px;
+  transform: scaleX(0);
+  transition: all 0.4s ease 0.2s;
+  bottom: 0;
+  left: 0;
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+}
+

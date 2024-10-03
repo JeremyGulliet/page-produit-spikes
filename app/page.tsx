@@ -1,101 +1,62 @@
-import Image from "next/image";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
+
+import ButtonBack from "@/components/ButonBack";
+import ButtonAdd from "@/components/product/ButtonAdd";
+import ButonWish from "@/components/product/ButtonWhish";
+import CarouselProduct from "@/components/product/CarouselProduct";
+import ProductDetails from "@/components/product/ProductDetails";
+import ProductHeader from "@/components/product/ProductHeader";
+import Quantity from "@/components/product/Quantity";
+import Social from "@/components/product/Social";
+import SwitchColor from "@/components/product/SwitchColor";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [quantity, setQuantity] = useState(1);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleQuantityChange = (value: number) => {
+    setQuantity(value);
+  };
+  const handleWishlist = () => {
+    if (localStorage.getItem("wishlist") === null) {
+      localStorage.setItem("wishlist", JSON.stringify(["Meryl Lounge Chair"]));
+    } else {
+      localStorage.removeItem("wishlist");
+    }
+  };
+  return (
+    <main className="text-space-cadet flex items-center justify-center">
+      <div className="flex w-1/2 flex-col gap-12 ">
+        <div className="flex flex-col gap-4">
+          <ButtonBack />
+          <ProductHeader category="Chair" name="Meryl Lounge Chair" />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <ProductDetails
+          title="Merly Lounge Chair"
+          price={149.99}
+          rating={4.6}
+          reviews={556}
+          description="The gently curved lines accentuated by sewn details are kind to your body and pleasant to look at. Also, there’s a tilt and height-adjusting mechanism that’s built to outlast years of ups and downs."
+        />
+        <SwitchColor
+          colors={["#C1BDB3", "#58737D", "#545454", "#CBA5A5"]}
+          selectedColor="#C1BDB3"
+        />
+        <div className="flex gap-6">
+          <Quantity handleQuantityChange={handleQuantityChange} />
+          <ButtonAdd />
+        </div>
+        <p className="ml-20">
+          Free 3-5 day shipping • Tool-free assembly • 30-day trial
+        </p>
+        <div className="ml-20 flex justify-between items-center mb-20 w-2/3">
+          <ButonWish handleWishlist={handleWishlist} />
+          <Social />
+        </div>
+      </div>
+      
+      <CarouselProduct />
+    </main>
   );
 }
