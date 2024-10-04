@@ -36,7 +36,7 @@ const Quantity: React.FC<QuantityProps> = ({ handleQuantityChange }) => {
   }, [handleQuantityChange, quantity]);
 
   return (
-    <div className="relative flex h-[52px] w-40 ml-20 select-none items-center justify-center rounded-[4px] border border-cool-grey">
+    <div className="relative flex md:h-[52px] w-32 md:w-40 ml-8 md:ml-20 select-none items-center justify-center rounded-[4px] border border-cool-grey">
       <Image
         src={minus}
         alt="Minus button"

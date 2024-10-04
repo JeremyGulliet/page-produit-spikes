@@ -13,7 +13,7 @@ type ProductHeaderProps = {
 
 const ProductHeader: React.FC<ProductHeaderProps> = ({ category, name }) => {
   return (
-    <div className={`${poppins.className} flex gap-2 text-[#17183B] ml-20`}>
+    <div className={`${poppins.className} flex gap-2 text-[#17183B] ml-8 md:ml-20`}>
       <p className="opacity-40">{category}</p>
       <p className="font-semibold text-sm">/</p>
       <p>{name}</p>

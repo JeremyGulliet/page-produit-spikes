@@ -23,12 +23,12 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
   description,
 }) => {
   return (
-    <div className={`${poppins.className}flex flex-col gap-10 w-2/3 ml-20`}>
-      <div className="flex flex-col gap-5">
-        <h1 className="text-5xl font-bold leading-loose text-[#17183B]">
+    <div className={`${poppins.className}flex flex-col gap-10 md:w-2/3  px-6 md:ml-20`}>
+      <div className="flex flex-col gap-5 ">
+        <h1 className=" text-4xl md:text-5xl font-bold leading-loose text-[#17183B]">
           {title}
         </h1>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <h2 className="title-medium text-[#17183B]">${price}</h2>
           <div className="flex gap-3">
             <Image src={Stars} alt="Stars rate" width={86} height={14} />
@@ -38,7 +38,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
           </div>
         </div>
       </div>
-      <p className="text-base text-[#17183B] w-11/12">{description}</p>
+      <p className="text-base text-[#17183B] mt-4  text-justify w-11/12">{description}</p>
     </div>
   );
 };

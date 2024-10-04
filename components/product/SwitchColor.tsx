@@ -8,7 +8,7 @@ const SwitchColor: React.FC<SwitchColorProps> = ({
   selectedColor,
 }) => {
   return (
-    <div className="flex items-center gap-3 ml-20">
+    <div className="flex items-center gap-3 ml-8 md:ml-20">
       {colors.map((color) => (
         <div
           key={color}

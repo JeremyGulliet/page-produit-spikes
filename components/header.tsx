@@ -1,7 +1,7 @@
 "use client"
 
 import { Cambay, Poppins } from "next/font/google";
-import { RiMenu5Fill } from "react-icons/ri";
+import { RiMenu5Fill, RiShoppingBag3Fill } from "react-icons/ri";
 import { IoIosSearch } from "react-icons/io";
 import { useState, useEffect } from "react";
 import {
@@ -13,6 +13,9 @@ import {
 import { BsCart2 } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./ui/sheet";
+import { FaInfoCircle, FaUsers } from "react-icons/fa";
+import { MdContactMail, MdDesignServices } from "react-icons/md";
 
 const cambay = Cambay({
   weight: ["700"],
@@ -117,6 +120,42 @@ const CartIconWithDropdown = () => {
   );
 };
 
+const ResponsiveMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const navs = ["SHOP", "COLLECTIVE", "DESIGNERS", "ABOUT US", "CONTACT"];
+
+  return (
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <SheetTrigger asChild>
+      <button className="flex items-center justify-center p-5 lg:hidden">
+        <RiMenu5Fill size={24} />
+      </button>
+      </SheetTrigger>
+      <SheetContent side="left" className="w-3/4 sm:max-w-sm">
+      <SheetHeader></SheetHeader>
+      <nav className="mt-8">
+        <ul className="flex flex-col space-y-4">
+        {navs.map((nav) => (
+          <li key={nav} className="flex items-center text-lg font-semibold text-[#17183B]">
+          <span className="mr-2">
+            {nav === "SHOP" && <RiShoppingBag3Fill size={20} />}
+            {nav === "COLLECTIVE" && <FaUsers size={20} />}
+            {nav === "DESIGNERS" && <MdDesignServices size={20} />}
+            {nav === "ABOUT US" && <FaInfoCircle size={20} />}
+            {nav === "CONTACT" && <MdContactMail size={20} />}
+          </span>
+          <Link href="/" onClick={() => setIsOpen(false)}>
+            {nav}
+          </Link>
+          </li>
+        ))}
+        </ul>
+      </nav>
+      </SheetContent>
+    </Sheet>
+  );
+};
+
 export default function Header() {
   const navs = ["SHOP", "COLLECTIVE", "DESIGNERS", "ABOUT US", "CONTACT"];
 
@@ -127,8 +166,8 @@ export default function Header() {
       >
         Cozy<span className="font-normal">®</span>
       </p>
-      <nav className={`${poppins.className}flex `}>
-        <ul className="flex items-center justify-center gap-10">
+      <nav className={`${poppins.className} flex`}>
+        <ul className="hidden items-center justify-center gap-10 lg:flex">
           {navs.map((nav) => (
             <li
               key={nav}
@@ -139,9 +178,10 @@ export default function Header() {
           ))}
         </ul>
       </nav>
+
       <div className="flex h-full justify-between">
         <div className="flex items-center justify-center p-5">
-          <RiMenu5Fill size={24} />
+          <ResponsiveMenu />
         </div>
         <div className="flex items-center justify-center p-5">
           <IoIosSearch size={24} />

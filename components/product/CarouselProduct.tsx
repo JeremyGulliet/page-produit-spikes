@@ -52,7 +52,7 @@ export default function Carousel(): JSX.Element {
   };
 
   return (
-    <div className="flex w-1/2 flex-col items-center gap-8 pr-10">
+    <div className="flex w-full flex-col items-center gap-8 p-4 md:p-10 xl:w-1/2 xl:py-10 xl:pr-10">
       <div className="flex w-full flex-col items-end gap-4">
         <div className="flex items-baseline gap-3 pr-7">
           <p className="headline-medium text-space-cadet">
@@ -60,7 +60,7 @@ export default function Carousel(): JSX.Element {
           </p>
           <p className="title-medium text-cool-grey">/ 05</p>
         </div>
-        <div className="flex gap-20">
+        <div className="flex gap-10 md:gap-20">
           <Image
             src={chevronLeft}
             alt="Left arrow"
@@ -74,28 +74,28 @@ export default function Carousel(): JSX.Element {
             onClick={handleNextImage}
           />
         </div>
-        <div className="relative h-[469.5px] w-[844px] overflow-hidden">
+        <div className="relative h-[200px] w-[300px] overflow-hidden sm:h-[250px] sm:w-[400px] md:h-[300px] md:w-[500px] lg:h-[350px] lg:w-[600px] xl:h-[469.5px] xl:w-[844px]">
           <Image
             priority
             src={currentImage}
             alt="Meryl Lounge Chair"
             id="main-image"
-            width={500}
-            height={461}
+            layout="fill"
+            objectFit="contain"
           />
         </div>
       </div>
 
-      <div className="flex items-end gap-6">
+      <div className="flex flex-col items-end gap-6 md:flex-row">
         {images.map((image) => (
           <Image
             key={image.src}
             src={image}
-            width={104}
-            height={104}
+            width={64}
+            height={64}
             className={`cursor-pointer rounded-[5px] border-2 border-solid object-cover p-2 ${
               currentImage === image ? "border-[#3AA39F]" : "border-[#D1D1D8]"
-            }`}
+            } md:h-[104px] md:w-[104px]`}
             onClick={() => handleImageChange(image)}
             alt={""}
           />

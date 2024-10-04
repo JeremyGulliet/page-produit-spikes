@@ -4,6 +4,7 @@ import Header from "@/components/header";
 
 
 
+
 export const metadata: Metadata = {
   title: "Page Produit - Spikes",
   description: "Challenge page produit",

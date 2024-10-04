@@ -67,7 +67,7 @@ const ButtonAdd: React.FC<ButtonAddProps> = ({
 
   return (
     <button
-      className={`${poppins.className} bg-[#3AA39F] text-white font-semibold w-44 gap-4 rounded-[4px] px-10 py-4`}
+      className={`${poppins.className} bg-[#3AA39F] text-xs text-white font-semibold md:w-44 gap-4 rounded-[4px] px-10 py-4`}
       onClick={handleAddToCart}
     >
       Add to Cart
